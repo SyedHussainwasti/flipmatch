@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Memory Match</title>
+<!-- All the page styling lives in styles.css -->
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<!-- The narrow column holding the whole game -->
+<div class="wrap">
+  <!-- The game title -->
+  <h1>🃏 <span class="m">Memory Match</span></h1>
+  <!-- Moves counter, timer, and the Restart button -->
+  <div class="hud">
+    <span>Moves <b id="moves">0</b></span>
+    <span>Time <b id="time">0:00</b></span>
+    <button class="btn-sm" id="restartBtn">Restart</button>
+  </div>
+  <!-- The 16 cards are built here by app.js -->
+  <div class="board" id="board"></div>
+  <!-- Small instructions under the board -->
+  <p class="hint">Flip two cards at a time.<br>Match all 8 pairs!</p>
+</div>
+<!-- The "You did it!" popup (hidden until you win) -->
+<div class="overlay hidden" id="ov">
+  <div class="panel">
+    <div class="big">🎉</div>
+    <h2>You did it!</h2>
+    <!-- Your final moves and time go here -->
+    <p class="stats" id="winStats"></p>
+    <button class="btn" id="againBtn">Play again</button>
+  </div>
+</div>
+<!-- All the game logic lives in app.js -->
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+/* The colors used everywhere on the page. Change them here to re-skin the game. */
+:root{--bg:#0b0e14;--card:#131722;--line:#232a3a;--txt:#e8ecf4;--dim:#8b94a7;--acc:#6ee7a0;}
+
+/* Reset: makes sizing predictable and removes default spacing on everything. */
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
+
+/* The page itself: dark background, text centered in a narrow column. */
+body{background:var(--bg);color:var(--txt);font-family:-apple-system,"Segoe UI",Inter,Roboto,sans-serif;display:flex;justify-content:center;min-height:100vh;padding:12px;}
+
+/* The narrow column that holds the whole game (max 430px wide). */
+.wrap{width:100%;max-width:430px;}
+
+/* The game title at the top. */
+h1{text-align:center;font-size:1.4rem;margin:8px 0;}
+
+/* The green-colored word inside the title. */
+h1 .m{color:var(--acc);}
+
+/* The row with Moves, Time and the Restart button. */
+.hud{display:flex;justify-content:space-between;align-items:center;padding:8px 4px;color:var(--dim);font-size:.95rem;}
+
+/* The bold numbers inside that row (the actual move/time counts). */
+.hud b{color:var(--txt);}
+
+/* The small Restart button. */
+.btn-sm{background:var(--card);border:1px solid var(--line);color:var(--txt);border-radius:10px;padding:10px 18px;font-size:.9rem;font-weight:700;cursor:pointer;}
+
+/* The 4-column grid that holds all 16 cards. */
+.board{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:6px;}
+
+/* One card button. The 3D flip happens inside it. */
+.card{position:relative;aspect-ratio:1;border:none;background:transparent;cursor:pointer;perspective:600px;min-height:64px;}
+
+/* One face of a card (front or back). Both faces sit on top of each other. */
+.face{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;border-radius:14px;border:1px solid var(--line);background:var(--card);font-size:2rem;backface-visibility:hidden;-webkit-backface-visibility:hidden;transition:transform .35s;}
+
+/* The front face: shows the ❔ question mark. */
+.face.front{transform:rotateY(0);}
+
+/* The back face: shows the emoji, hidden behind the card at first. */
+.face.back{transform:rotateY(180deg);background:#1a2233;font-size:2.2rem;}
+
+/* When a card is flipped: the front spins away... */
+.card.up .face.front{transform:rotateY(-180deg);}
+
+/* ...and the back spins into view. */
+.card.up .face.back{transform:rotateY(0);}
+
+/* Matched pairs glow green so you can see your progress. */
+.card.done .face.back{border-color:var(--acc);box-shadow:0 0 12px rgba(110,231,160,.35);}
+
+/* The dark full-screen layer behind the "You did it!" popup. */
+.overlay{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(5,8,14,.85);padding:20px;z-index:10;}
+
+/* Hides the popup when the game is running. */
+.overlay.hidden{display:none;}
+
+/* The white-on-dark box of the "You did it!" popup. */
+.panel{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:32px;text-align:center;display:flex;flex-direction:column;gap:14px;align-items:center;max-width:340px;}
+
+/* The "You did it!" heading inside the popup. */
+.panel h2{font-size:1.6rem;}
+
+/* The big 🎉 emoji at the top of the popup. */
+.panel .big{font-size:2.6rem;}
+
+/* The big green "Play again" button. */
+.btn{background:linear-gradient(135deg,#6ee7a0,#7cc7ff);border:none;border-radius:12px;padding:14px 38px;font-size:1.05rem;font-weight:800;color:#06110b;cursor:pointer;}
+
+/* The "X moves, Y time" text in the popup. */
+.stats{color:var(--dim);line-height:1.8;}
+
+/* The bold numbers inside the win stats. */
+.stats b{color:var(--txt);}
+
+/* The small hint text under the board ("Flip two cards at a time"). */
+.hint{color:var(--dim);font-size:.85rem;text-align:center;margin-top:10px;}
